@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://helix.ru/" />
+<title>CreatePreOrder - С авторизацией</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">CreatePreOrder - С авторизацией</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.Home-NewsAndAdditional-MainLinks-Link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=MainMenu-Search-SearchBox</td>
+	<td>02-029</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>link=Клинический анализ крови с лейкоцитарной формулой и СОЭ</td>
+	<td>Клинический анализ крови с лейкоцитарной формулой и СОЭ</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=заказать</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=span.MessageBox-Text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.MessageBox-Text</td>
+	<td>Услуга добавлена в предварительный заказ</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=просмотреть/оформить</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTitle</td>
+	<td>Предварительный заказ. Просмотр позиций.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@onclick='PreOrderGoToStep(2); return false; ']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTitle</td>
+	<td>Предварительный заказ. Заполнение персональных данных.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=Email</td>
+	<td>testus1@bk.ru</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@onclick='PreOrderSetCustomer(); return false;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTitle</td>
+	<td>Авторизация</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>Nn1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//form[@id='PreOrders-CustomerInfo-Form']/table/tbody/tr/td[2]/div/span/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//form[@id='PreOrders-CustomerInfo-Form']/table/tbody/tr/td[2]/div/span/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//button[@onclick=&quot;$(location).attr('href', '/preorder/step3');&quot;]</td>
+	<td>10,10</td>
+</tr>
+<tr>
+	<td>waitForTitle</td>
+	<td>Предварительный заказ. Подтверждение.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//button[@onclick='PreOrderSendToService(this); return false;']</td>
+	<td>10,10</td>
+</tr>
+<tr>
+	<td>waitForTitle</td>
+	<td>Предварительный заказ успешно оформлен</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

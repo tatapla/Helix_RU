@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://change-this-to-the-site-you-are-testing/" />
+<title>order</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">order</td></tr>
+</thead><tbody>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(//span[@class='Content-CurrentProfile-Name'])</td>
+	<td>cur_temp</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>storedVars['cur_temp'].split(' (')[0]</td>
+	<td>cur</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${cur}</td>
+	<td></td>
+</tr>
+<!--Создание предварительного заказа. Начальные условия. Корзина пуста, есть профиль-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a/div[text()='Мои заказы'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//button[text()='Сделать предварительный заказ'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[text()='Сделать предварительный заказ'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//h2[text()='Анализы'])</td>
+	<td></td>
+</tr>
+<!--Привязка к региону-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'ShowRegionDialog')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//div[@class='RegionSelection']//span[text()='Санкт-Петербург'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='RegionSelection']//span[text()='Санкт-Петербург'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(//div[@class='Site-Header-InfoPanel']//a)</td>
+	<td>Санкт-Петербург</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[text()='Топ-50'])</td>
+	<td></td>
+</tr>
+<!--Функция добавления в корзину. На странице должег присутствовать анализ с указанным HXID-->
+<tr>
+	<td>call</td>
+	<td>add_item</td>
+	<td>hxid='02-014', city='Санкт-Петербург'</td>
+</tr>
+<tr>
+	<td>function</td>
+	<td>add_item</td>
+	<td>hxid, city</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://api.helix.ru/catalog/GetCatalogItemPrice?hxid=${hxid}&amp;city=${city}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(//pre)</td>
+	<td>pr_temp</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>(storedVars['pr_temp'].split(':')[3]).split('.00')[0]</td>
+	<td>price1</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${price1}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>goBackAndWait</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//span[text()='[${hxid}]'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//button[contains(@onclick,'${hxid}')]/../..//b[text()='${price1}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'${hxid}')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>xpath=(//span[contains(@id,'PreOrdersInfo-Count')])</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[text()='просмотреть/оформить'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderGoToStep(2)')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//span[@class='PreOrders-Item-HXID']/span[text()='${hxid}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>endFunction</td>
+	<td></td>
+	<td></td>
+</tr>
+<!--Проверка услуги взятия крови-->
+<tr>
+	<td>open</td>
+	<td>https://api.helix.ru/catalog/GetCatalogItemPrice?hxid=90-001&amp;city=Санкт-Петербург</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(//pre)</td>
+	<td>pr_temp</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>(storedVars['pr_temp'].split(':')[3]).split('.00')[0]</td>
+	<td>price2</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${price2}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>goBackAndWait</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//div/span[text()='[90-001]'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//div/span[text()='[90-001]']/..//b[text()='${price2}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>parseInt(((${price1}+${price2})*3)/100)</td>
+	<td>disc</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${disc}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//span[@id='PreOrders-Discount-Range'])</td>
+	<td>${disc}</td>
+</tr>
+<!--Второй шаг-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderGoToStep(2)')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderSetCustomer')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//span[text()='${cur}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//span[@class='k-input'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//ul[@id='fio_listbox']/li[text()='${cur}'])</td>
+	<td></td>
+</tr>
+<!--Третий-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderSetCustomer')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderSendToService')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'PreOrderSendToService')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//h1[text()='Предварительный заказ успешно оформлен'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(//p[contains(text(),'Номер вашего предварительного заказа')]/b)</td>
+	<td>id_order</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[text()='Личный кабинет клиента'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//table[@class='Content-Table']//a[text()='${id_order}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${cmail}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${id_order}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

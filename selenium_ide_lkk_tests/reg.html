@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://change-this-to-the-site-you-are-testing/" />
+<title>reg</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">reg</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>javascript{new Date().getTime()}</td>
+	<td>global_prefix</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>${global_prefix}@domen.uu</td>
+	<td>cmail</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>111</td>
+	<td>pass</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://dev-web:4480/enter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//section[@id='regBlock']//input[@id='email'])</td>
+	<td>${cmail}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'CreateMyLKK')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//button[contains(@onclick,'EmailRepeat')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>https://dev-web:4580/Authorization/TestActivation?email=${cmail}&amp;password=${pass}</td>
+	<td>act_url</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${act_url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//pre[contains(text(),'Success')])</td>
+	<td></td>
+</tr>
+<!--Вход в ЛКК-->
+<tr>
+	<td>open</td>
+	<td>https://dev-web:4480/enter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='email'])</td>
+	<td>${cmail}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='pass'])</td>
+	<td>${pass}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[contains(@onclick,'EnterLKKNew')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${cmail}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//div[@class='Content-MainMenu'])</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

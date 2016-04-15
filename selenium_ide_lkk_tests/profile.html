@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://change-this-to-the-site-you-are-testing/" />
+<title>profile</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">profile</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>javascript{(&quot;&quot;+Math.random()).substring(2,6)}</td>
+	<td>profile_prefix</td>
+</tr>
+<!--Заполнение данных-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a/div[text()='Мои данные'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetUserInfo')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetUserInfo')])</td>
+	<td></td>
+</tr>
+<!--alterxpath xpath=(//div[contains(text(),'Персональные данные')])-->
+<tr>
+	<td>storeXpathCount</td>
+	<td>xpath=(//td[contains(@id,'UserInfoTitle')])</td>
+	<td>profile_count</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//div[@class='Modal'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name='LastName'])</td>
+	<td>javascript{String.fromCharCode(1040 + Math.random() * 36)+'Иванов'}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name='Name'])</td>
+	<td>javascript{String.fromCharCode(1040 + Math.random() * 36)+'Петр'}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name='MiddleName'])</td>
+	<td>javascript{String.fromCharCode(1040 + Math.random() * 36)+'Сидорович'}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//td[contains(@id,'UserInfoTitle')])[${profile_count}+1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>xpath=(//td[contains(@id,'UserInfoTitle')])[${profile_count}+1]</td>
+	<td>fullname</td>
+</tr>
+<!--Диагностич центры-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetCenterInfo')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//select[@name='AccountCode'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//select[@name='AccountCode'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//select</td>
+	<td>ДЦ Апраксин</td>
+</tr>
+<tr>
+	<td>storeXpathCount</td>
+	<td>xpath=(//table[@class='Content-Table']//td[text()='ДЦ Апраксин'])</td>
+	<td>diag_count</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//table[@class='Content-Table']//td[text()='ДЦ Апраксин'])[${diag_count}+1]</td>
+	<td></td>
+</tr>
+<!--Адрес-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetAddressInfo')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>500</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//div[@class='Modal']//input[@id='City'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='City'])</td>
+	<td>Санкт</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='Street'])</td>
+	<td>Санкт</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='House'])</td>
+	<td>${profile_prefix}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//table[@class='Content-Table']//td[contains(text(),'д. ${profile_prefix}')])</td>
+	<td></td>
+</tr>
+<!--Телефон-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetPhoneInfo')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@id='Phone'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>500</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{(&quot;&quot;+Math.random()).substring(2,12)}</td>
+	<td>tel</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>xpath=(//input[@id='Phone'])</td>
+	<td>${tel}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//table[@class='Content-Table']//td[contains(text(),'${tel}')])</td>
+	<td></td>
+</tr>
+<!--Email-->
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@onclick,'DatasGetAliasInfo')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{new Date().getTime()+'@dopdomen.ii'}</td>
+	<td>cdopemail</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name='Email'])</td>
+	<td>${cdopemail}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//div[@class='Modal']//button)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//table[@class='Content-Table']//td[text()='${cdopemail}'])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${fullname}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
